@@ -98,5 +98,5 @@ class TransferSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Transfer
-        fields = ('id', 'from_account', 'to_account', 'amount')
+        fields = ('id', 'from_account', 'to_account', 'amount', 'comment')
         read_only_fields = ('id', )

@@ -114,6 +114,7 @@ class Transfer(models.Model):
         max_digits=12,
         decimal_places=2
     )
+    comment = models.CharField(max_length=100)
 
 
 class Interest(models.Model):
