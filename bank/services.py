@@ -3,7 +3,7 @@ from django.db import transaction
 from django.core.exceptions import ValidationError
 
 
-def make_transfer(from_account, to_account, amount):
+def make_transfer(from_account, to_account, amount, comment):
 
     if from_account.balance < amount:
         raise(ValueError('Not enough money'))
@@ -22,7 +22,8 @@ def make_transfer(from_account, to_account, amount):
         transfer = Transfer.objects.create(
             from_account=from_account,
             to_account=to_account,
-            amount=amount
+            amount=amount,
+            comment=comment,
         )
 
     return transfer
