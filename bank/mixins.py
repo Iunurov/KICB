@@ -7,12 +7,7 @@ from .utils import get_error_message
 
 
 class ServiceExceptionHandlerMixin:
-    '''
-    Mixin that transforms django and python exceptions
-    into rest_framework ones.
-    We use it for the services in the APIs -
-    without the mixin, they return 500 status code which is not desired.
-    '''
+
     expected_exceptions = {
         # Python errors here:
         ValueError: rest_exceptions.ValidationError,

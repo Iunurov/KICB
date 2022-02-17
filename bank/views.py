@@ -73,7 +73,9 @@ class CustomerDetail3(generics.RetrieveUpdateAPIView):
 
 class AccountViewSet(viewsets.GenericViewSet,
                      mixins.ListModelMixin,
-                     mixins.CreateModelMixin,):
+                     mixins.CreateModelMixin,
+                     mixins.DestroyModelMixin,
+                     ):
     serializer_class = AccountSerializer
     authentication_classes = (TokenAuthentication,)
     permission_classes = (IsAuthenticated, )

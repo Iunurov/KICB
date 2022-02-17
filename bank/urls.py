@@ -2,7 +2,6 @@ from rest_framework.routers import DefaultRouter
 from django.urls import path, include
 from bank.views import *
 
-# from rest_framework.urlpatterns import format_suffix_patterns
 
 app_name = 'bank'
 
@@ -22,5 +21,3 @@ urlpatterns = [
 
 ]
 
-# not working with routes. I thing because this is included in routes
-# urlpatterns = format_suffix_patterns(urlpatterns)
