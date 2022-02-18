@@ -161,22 +161,28 @@ AUTHENTICATION_BACKENDS = (
     "allauth.account.auth_backends.AuthenticationBackend",
 )
 
+
+## Broker settings.
+BROKER_URL = 'amqp://guest:guest@localhost:5672//'
+
+# List of modules to import when celery starts.
+CELERY_IMPORTS = ('myapp.tasks', )
+
+## Using the database to store task state and results.
+CELERY_RESULT_BACKEND = 'db+postgresql://scott:tiger@localhost/mydatabase'
+
+CELERY_ANNOTATIONS = {'tasks.add': {'rate_limit': '10/s'}}
+
 # Celery settings
-CELERY_BROKER_URL = 'redis://redis:6379'
-CELERY_RESULT_BACKEND = 'redis://redis:6379'
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_IMPORTS = ("bank.tasks", )
 
 CELERY_BEAT_SCHEDULE = {
-    # 'hello': {
-    #     'task': 'bank.tasks.hello',
-    #     'schedule': crontab()  # execute every minute
-    # },
     'make_interest': {
         'task': 'bank.tasks.call_make_interest',
-        'schedule': crontab()  # execute every minute
+        'schedule': crontab(1)  # execute every minute
     },
 
 }
